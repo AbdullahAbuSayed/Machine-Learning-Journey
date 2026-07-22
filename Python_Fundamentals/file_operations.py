@@ -1,4 +1,4 @@
-#### Read
+# ### Read
 
 # f = open("Python_Fundamentals/sample.txt", "r")
 # Data = f.read()
@@ -8,17 +8,17 @@
 
 # f.close
 
-###Write
+# ##Write
 
 # wr=open("Python_Fundamentals/sample.txt", "w")
 # new=wr.write("Thsi is overwrited \n New data added")
 # wr.close()
 
-### Append is also same just write at the end
+# ## Append is also same just write at the end
 
-#### w+, r+, a+
+# ### w+, r+, a+
 
-### with kw automatically handles open close
+# ## with kw automatically handles open close
 
 # with open("Python_Fundamentals/sample.txt", "r+") as e:
 #     # e.write("New ")
@@ -27,20 +27,26 @@
 #     e.read()
 #     e.write("This is a trial")## pointer is at the end so its write last
 
-# #### similarly works with a+ and w+(works with pointer)
+#### similarly works with a+ and w+(works with pointer)
 
-## import os
-# # y = open("Python_Fundamentals/sample2.txt", "x")
-
-
-# ## delete
-## os.remove("Python_Fundamentals/sample2.txt")
+# import os
+# y = open("Python_Fundamentals/sample2.txt", "x")
 
 
-z = open("Python_Fundamentals/sample.txt", "r")
-data ="python"
-while True:
-    if data in z:
-        k =z.readline()
-        print(k)
+## delete
+# os.remove("Python_Fundamentals/sample2.txt")
 
+line =1
+with open("Python_Fundamentals/sample.txt", "r") as ff:
+    while True:
+        data = ff.readline()
+         
+        if ("python" in data):
+            print ("Found")
+            print(f"Line {line}")
+            break
+    
+        print(data)  
+        line+=1
+    
+    
