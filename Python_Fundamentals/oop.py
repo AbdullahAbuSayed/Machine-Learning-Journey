@@ -1,64 +1,64 @@
-# ### Class
-# class student:
-#     subject ="math"
-#     year = 2019
-#     clg = "ngc"
+### Class
+class student:
+    subject ="math"
+    year = 2019
+    clg = "ngc"
 
-# student1=student()
-# print(student)
-# print(student1.clg,student1.subject)
+student1=student()
+print(student)
+print(student1.clg,student1.subject)
 
-### Constractor init
+## Constractor init
 
-# class car:
-#     wheel = "4 wheeler"
-#     def __init__(self,model,num):
-#          self.model = model
-#          self.num = num
-#          print("called automatically")
-#     color="black"
-# car3=car() #Not work because init have to be initialize
-# print(car3.color)
-# car1=car("Toyota",123)
-# print(car1.wheel,car1.color)
-# # print(car1.model)
-# car2=car("BMW",555)
-# print(car2.color,car2.wheel)
+class car:
+    wheel = "4 wheeler"
+    def __init__(self,model,num):
+         self.model = model
+         self.num = num
+         print("called automatically")
+    color="black"
+car3=car() #Not work because init have to be initialize
+print(car3.color)
+car1=car("Toyota",123)
+print(car1.wheel,car1.color)
+# print(car1.model)
+car2=car("BMW",555)
+print(car2.color,car2.wheel)
 
 
-#########  METHID
+########  METHID
 
-### Instance Method
-# class laptop:
-#      storage_type = "ssd"
+## Instance Method
+class laptop:
+     storage_type = "ssd"
 
-#      @classmethod
-#      def variant(cls):
-#           print(f"This variant is {cls.storage_type} variant")
+     @classmethod
+     def variant(cls):
+          print(f"This variant is {cls.storage_type} variant")
         
-#      def __init__(self,color,ram,ssd):
-#           self.color = color
-#           self.ram = ram
-#           self.ssd = ssd
+     def __init__(self,color,ram,ssd):
+          self.color = color
+          self.ram = ram
+          self.ssd = ssd
     
-#      @staticmethod
-#      def price(cPrice,dPrice):
-#           print(f"Total Price {cPrice*dPrice}")
+     @staticmethod
+     def price(cPrice,dPrice):
+          print(f"Total Price {cPrice*dPrice}")
     
 
 
-#      def get_print(self):
-#           print(f"This laptop color is {self.color} and spec is {self.ram} gb ram and {self.ssd} gb {self.storage_type}")
+     def get_print(self):
+          print(f"This laptop color is {self.color} and spec is {self.ram} gb ram and {self.ssd} gb {self.storage_type}")
           
-# laptop1=laptop("Black",16,512)
-# laptop1.get_print()    
+laptop1=laptop("Black",16,512)
+laptop1.get_print()    
 
-# ### Class Methods
-# laptop1.variant()
+### Class Methods
+laptop1.variant()
 
 
-# ### Static Method
-# laptop1.price(10,20)
+### Static Method
+laptop1.price(10,20)
 
 
 class store:
@@ -68,7 +68,7 @@ class store:
         self.price=price
         store.count+=1
 
-    def get_info(self):
+    def get_info(self):##instance method
         print(f"Product is {self.name} and price is {self.price} Tk ")
     
     @classmethod
