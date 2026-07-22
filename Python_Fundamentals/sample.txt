@@ -1,2 +1,5 @@
-Newi is overwrited 
- New data addedThis is a trialThis is a trialThis is a trialThis is a trialThis is a trialThis is a trialThis is a trial
+this is sample 1
+I am rafi
+i am 24 years old
+i am learning python
+this is a demo file
