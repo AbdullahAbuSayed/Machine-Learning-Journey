@@ -1,5 +1,77 @@
-this is sample 1
-I am rafi
-i am 24 years old
-i am learning python
-this is a demo file
+ABSTRACT
+Short Message Service (SMS) is still one of the most common ways people communicate today. Unfortunately, this popularity makes it a massive target for spam and SMS phishing, known as smishing. A lot of modern detection systems rely heavily on deep learning and transformer models. While these advanced tools offer great classification performance, they eat up computational resources. They also act like black boxes, meaning they lack interpretability. We propose a lightweight, explainable machine learning framework to solve this problem for SMS spam and smishing detection. Our approach brings together efficient text preprocessing, TF-IDF feature extraction, and traditional machine learning classifiers. We specifically evaluate Naive Bayes, Support Vector Machines (SVM), Random Forest, K-Nearest Neighbors (KNN), Decision Trees, and Logistic Regression. To build user trust and make the system transparent, we integrate Explainable Artificial Intelligence (XAI) methods, namely SHAP and LIME. These tools let us actually see the reasons behind each prediction outcome. Our proposed framework aims for highly reliable detection while keeping false-positive rates low and computer overhead minimal. By matching efficiency with real explainability, we provide a practical setup for resource-constrained mobile security applications and network-level SMS filters.
+
+Keywords: SMS spam detection, smishing detection, explainable artificial intelligence, machine learning, TF-IDF, cybersecurity, text classification.
+
+I. INTRODUCTION
+Short Message Service (SMS) is still one of the most widely used communication technologies today. It is simple, reliable, and works across nearly all mobile devices. Despite the massive growth of internet-based messaging apps, people still rely heavily on SMS for personal chats, financial alerts, multi-factor authentication, and business updates. However, this massive popularity has a major downside. It has made SMS a highly attractive target for cybercriminals who use it to send out spam, fraudulent messages, and phishing attacks, which are commonly known as smishing.
+
+Smishing attacks are especially dangerous. Attackers often pretend to be trusted organizations, like banks, government agencies, or delivery services, trying to trick users into revealing sensitive information or clicking on malicious links. Unlike typical email spam, SMS texts are usually short and informal. They contain abbreviations, slang, and irregular writing patterns, making them much harder to automatically detect and filter [1]–[3].
+
+Traditional machine learning approaches have actually shown a lot of promise here. Algorithms like Naive Bayes, Support Vector Machines (SVM), Random Forest, K-Nearest Neighbors (KNN), Decision Trees, and Logistic Regression perform very well when paired with text representation techniques like Term Frequency-Inverse Document Frequency (TF-IDF) [1]–[3], [6]. Because these traditional methods do not require heavy computational power, they are great for real-time applications. More recently, deep learning and transformer-based models have achieved even better detection accuracy by capturing complex semantic relationships in the text [4], [5]. But while these advanced models are highly effective, they demand huge computational resources and offer very little interpretability. That makes them less practical for resource-constrained environments.
+
+Furthermore, many of today's SMS detection systems operate as un-auditable black boxes. They provide almost no explanation for why they make specific predictions. This lack of transparency quickly reduces user trust. It also makes it incredibly difficult to analyze incorrect classifications, particularly false positives that might end up blocking a legitimate, urgent message. Explainable Artificial Intelligence (XAI) techniques, such as SHAP and LIME, can improve model transparency by identifying exactly how individual features contribute to a prediction. Yet, integrating XAI with lightweight SMS detection frameworks remains fairly limited [4].
+
+To address these issues, we propose a lightweight, explainable machine learning framework for SMS spam and smishing detection. Our proposed framework combines efficient text preprocessing and TF-IDF feature extraction with classical machine learning classifiers. We then apply post-hoc explainability techniques to achieve accurate and interpretable classification. Ultimately, we aim to balance detection performance, computational efficiency, and transparency so the system can actually be deployed in mobile and network-level SMS filtering.
+
+Our main contributions are summarized as follows:
+
+We design a lightweight SMS spam and smishing detection framework based on computationally efficient machine learning techniques.
+
+We integrate SHAP and LIME-based explainability methods to provide clear, interpretable classification decisions.
+
+We focus heavily on reducing false-positive classifications while still maintaining highly reliable detection performance.
+
+We offer a practical framework that is suitable for real-time SMS filtering in resource-constrained environments.
+
+The remainder of this paper is organized as follows. Section II reviews existing research on SMS spam detection, smishing detection, lightweight machine learning, and explainable AI. Section III presents our proposed methodology. Section IV describes the experimental setup and evaluation metrics. Section V discusses the results, and Section VI concludes the paper with future research directions.
+
+II. LITERATURE REVIEW
+A. Classical Machine Learning Approaches
+Early research on detecting SMS spam mostly focused on tweaking traditional text classifiers that were originally built for email filters. When public datasets—especially the SMS Spam Collection—became available, they gave researchers a standardized baseline to evaluate machine learning detection methods [1]–[3]. For example, Almeida et al. [1] showed how effective traditional classifiers could be for SMS spam. Around the same time, Gómez Hidalgo et al. [2] looked into content-based filtering using specific message traits, and Delany et al. [3] analyzed various filtering techniques, pointing out that statistical learning works quite well for SMS classification.
+
+Over the years, classical machine learning algorithms have shown very competitive performance. Studies regularly highlight Naive Bayes, Support Vector Machines (SVM), Random Forest, K-Nearest Neighbors (KNN), Decision Trees, and Logistic Regression, especially when they are combined with text representation techniques like Term Frequency–Inverse Document Frequency (TF-IDF) and n-gram features [1]–[3], [6]. Among these, Naive Bayes and Logistic Regression remain incredibly popular because they are simple, cheap to run, and fit perfectly into real-time filtering applications [7]. That said, these traditional methods do rely heavily on manually designed text features, which means they can sometimes struggle to grasp the more complex, hidden semantic meanings inside a message.
+
+B. Deep Learning and Transformer-Based Methods
+To overcome the limits of traditional machine learning, a lot of recent studies have shifted toward deep learning and transformer-based architectures. Neural network models, like Long Short-Term Memory (LSTM) networks and transformers, are great at capturing deeper contextual information from raw text. Consequently, they have achieved significantly better classification performance in SMS spam detection tasks [4], [5]. On top of that, large language model-based approaches have shown an even stronger semantic understanding, making them very effective when detecting complicated spam patterns [8].
+
+However, despite their impressive performance, these deep learning and transformer models bring up a few major challenges. They typically require much larger datasets, heavy computational resources, and longer inference times than traditional machine learning methods. These heavy requirements make them tough to deploy in resource-constrained environments, like mobile devices or live SMS network filters. Because of this, finding lightweight approaches that keep detection reliable while cutting down on computational complexity is still a huge research priority.
+
+C. Smishing Detection Approaches
+Conventional SMS spam is usually just an annoyance, but smishing is specifically designed for social engineering. Attackers try to steal sensitive information using fraudulent messages and malicious links. To fight this, existing research often investigates combining message content analysis with extra features—like URL characteristics and website behavior—to boost phishing detection.
+
+Mishra and Soni [9], for instance, proposed a smishing detection method that analyzes the actual SMS content alongside URL-based data to catch phishing attempts. Similarly, other machine learning approaches have proven that mixing multiple feature types can definitely improve detection accuracy [10]. The problem is that many of these smishing detection systems rely on external information sources or real-time URL analysis. Checking live URLs increases system complexity and makes the model less suitable for lightweight, real-time deployment. This highlights a clear need for efficient approaches that can detect both spam and smishing threats using computationally inexpensive methods.
+
+D. Explainable Artificial Intelligence in SMS Detection
+As machine learning security systems become more common, model interpretability has turned into a massive requirement. A lot of advanced detection models, especially deep learning and transformer architectures, essentially operate as black-box systems. They provide very limited explanations for their decisions. This lack of transparency quickly chips away at user trust and makes it incredibly frustrating to figure out why a model made an incorrect prediction.
+
+Explainable Artificial Intelligence (XAI) techniques, like SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-Agnostic Explanations), offer a way to understand these predictions. They work by identifying exactly how much individual features contribute to the final classification outcome. Recently, Uddin et al. [4] explored explainability analysis specifically for transformer-based SMS spam detection. But again, the computational weight of transformer models limits how well they can be deployed in lightweight scenarios. Therefore, bringing XAI techniques together with efficient, traditional machine learning models remains an important step for building practical and transparent SMS detection systems.
+
+E. Research Gap
+Even though there has been a lot of progress in SMS spam and smishing detection, a few critical limitations still stand out. Deep learning and transformer-based models generally achieve fantastic detection accuracy, but they demand substantial computational resources and offer poor interpretability. On the flip side, traditional machine learning methods are wonderfully efficient, yet they can sometimes struggle with tricky semantic patterns and usually lack built-in explanation capabilities.
+
+Furthermore, a lot of the existing studies are heavily focused on simply pushing up classification accuracy. They give surprisingly little attention to reducing false-positive classifications. Incorrectly blocking a legitimate SMS message can cause real problems for users, especially when dealing with financial alerts, healthcare updates, or authentication codes. On top of that, integrating structured explainability tools into lightweight SMS detection frameworks is still relatively rare.
+
+Because of this, we see a clear research gap: there is a need for a unified framework that combines lightweight machine learning, accurate spam and smishing detection, false-positive reduction, and explainable decision-making. We address these exact challenges in our work. We propose an explainable machine learning framework that evaluates a robust set of classifiers—specifically K-Nearest Neighbors, Decision Trees, Naive Bayes, Logistic Regression, SVM, and Random Forest. Our goal is to balance strong detection performance, computational efficiency, and full transparency for practical SMS security applications.
+
+REFERENCES
+
+[1] T. A. Almeida, J. M. G. Hidalgo, and A. Yamakami, "Contributions to the study of SMS spam filtering: New collection and results," in Proc. 11th ACM Symp. Document Engineering (DocEng'11), Mountain View, CA, USA, 2011, pp. 259–262.
+
+[2] J. M. Gómez Hidalgo, G. Cajigas Bringas, E. Puertas Sánz, and F. Carrero García, "Content based SMS spam filtering," in Proc. 2006 ACM Symp. Document Engineering, Amsterdam, The Netherlands, 2006, pp. 107–114.
+
+[3] S. J. Delany, M. Buckley, and D. Greene, "SMS spam filtering: Methods and data," Expert Systems with Applications, vol. 39, no. 10, pp. 9899–9908, 2012.
+
+[4] M. A. Uddin, M. N. Islam, L. Maglaras, H. Janicke, and I. H. Sarker, "ExplainableDetector: Exploring transformer-based language modeling approach for SMS spam detection with explainability analysis," arXiv preprint arXiv:2405.08026, 2024.
+
+[5] H. A. Al-Kabbi, M.-R. Feizi-Derakhshi, and S. Pashazadeh, "Multi-type feature extraction and early fusion framework for SMS spam detection," IEEE Access, vol. 11, pp. 123756–123765, 2023.
+
+[6] S. Rapacz, P. Chołda, and M. Natkaniec, "A method for fast selection of machine-learning classifiers for spam filtering," Electronics, vol. 10, no. 17, art. 2083, 2021.
+
+[7] A. B. Ahmed and K. Haruna, "Enhanced SMS spam detection using Bernoulli Naïve Bayes with TF-IDF," FUDMA Journal of Sciences, vol. 9, no. 1, pp. 393–399, 2025.
+
+[8] M. Ahmadi, L. Wang, and Y. Zhao, "Leveraging large language models for cybersecurity: Enhancing SMS spam detection with robust and context-aware text classification," arXiv preprint arXiv:2502.11014, 2025.
+
+[9] S. Mishra and D. Soni, "Smishing Detector: A security model to detect smishing through SMS content analysis and URL behavior analysis," Future Generation Computer Systems, vol. 108, pp. 803–815, 2020.
+
+[10] A. Shaikh, M. Shaikh, and S. R., "Smishing Detection: Combating SMS Phishing Attacks by Utilizing Machine-Learning Algorithms," SSRN Electronic Journal, 2025.
