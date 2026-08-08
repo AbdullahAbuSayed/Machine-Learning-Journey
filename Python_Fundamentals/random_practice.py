@@ -29,3 +29,22 @@ if __name__ == "__main__":
     
     result = binary_search(nums, target_val)
     print(result)
+
+import urllib.request
+import json
+
+def fetch_user_data(user_id):
+    url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
+    try:
+        with urllib.request.urlopen(url) as response:
+            data = json.loads(response.read().decode())
+            return {
+                "name": data.get("name"),
+                "email": data.get("email"),
+                "company": data.get("company", {}).get("name")
+            }
+    except urllib.error.URLError:
+        return None
+
+user = fetch_user_data(1)
+print(user) 
